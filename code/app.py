@@ -100,23 +100,8 @@ app.config['SECRET_KEY'] = 'secret!'
 socketio = SocketIO(app, cors_allowed_origins="*")
 
 
-@app.route('/', methods=['POST'])
+@app.route('/', methods=['POST', 'GET'])
 def sessions():
-    # bot_name = 'Sam'
-    # cb = ChatBot(bot_name, intents_file_path,
-    #              all_data_pickle_file_path, chatbot_model_file_path)
-    # form = FlaskWindow()
-
-    # you_msg = {read in name=you from index.html}
-    # form.reply_message(you_msg, "You")
-    # form.reply_message(cb.get_response(you_msg), cb.bot_name)
-    
-    # Probably not use:
-    # chat_responses = []
-    # for i in form.convo:
-    #     chat_responses.append(i)
-    #     print(i)
-
     return render_template('index.html') #, form=form, chat_responses=chat_responses)
 
 

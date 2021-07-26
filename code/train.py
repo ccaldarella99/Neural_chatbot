@@ -5,8 +5,10 @@ import numpy as np
 import pandas as pd
 import pickle
 import nltk
-# Below line was needed once while running on Windows 10
+# Below line was needed once while running on Windows 10 and Ubuntu
 # nltk.download('punkt')
+# Below line was needed once while running on Ubuntu
+# nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 
 from sklearn.feature_extraction.text import TfidfVectorizer
