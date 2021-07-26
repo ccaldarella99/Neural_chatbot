@@ -6,9 +6,9 @@ import pandas as pd
 import pickle
 import nltk
 # Below line was needed once while running on Windows 10 and Ubuntu
-# nltk.download('punkt')
+nltk.download('punkt')
 # Below line was needed once while running on Ubuntu
-# nltk.download('wordnet')
+nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -110,13 +110,13 @@ def create_keras_model(training):
     model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
     # train
-    hist = model.fit(train_x, train_y, epochs=2000, batch_size=5, verbose=0)
-    pd.DataFrame(hist.history).to_csv(epochs_log_file_path)
+    hist = model.fit(train_x, train_y, epochs=300, batch_size=5, verbose=1)
+    # pd.DataFrame(hist.history).to_csv(epochs_log_file_path)
     model.save(chatbot_model_file_path, hist)
     print('[INFO] :   - Model trained from Pickle')
 
 
-if __name__ == "__main__":
+def create_training_data():
     """
         Delete all files in "Models" to retrain model from updated intents.json
         Note this uses f-strings and requires Python v3.6 or higher
@@ -171,3 +171,10 @@ if __name__ == "__main__":
                 print(f'[ERROR] : KERAS MODEL FILE COULD NOT BE CREATED')
                 print(f'[ERROR] : INDEX ERROR: {ind}')
         print(pline)
+
+if __name__ == "__main__":
+    """
+        Delete all files in "Models" to retrain model from updated intents.json
+        Note this uses f-strings and requires Python v3.6 or higher
+    """
+    create_training_data()

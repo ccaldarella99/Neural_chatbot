@@ -7,8 +7,18 @@ import pickle
 import numpy as np
 from tensorflow.keras.models import load_model
 
+#INITIALIZE - for first run only:
+# import subprocess
+# subprocess.call(['python', 'train.py'])
+# OR 
+import train
+train.create_training_data()
+
 import nltk
+# Below line was needed once while running on Windows 10 and Ubuntu
 # nltk.download('punkt')
+# Below line was needed once while running on Ubuntu
+# nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 
 # import time
