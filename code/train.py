@@ -2,13 +2,13 @@ import os
 import random
 import json
 import numpy as np
-import pandas as pd
+# import pandas as pd
 import pickle
 import nltk
-# Below line was needed once while running on Windows 10 and Ubuntu
-nltk.download('punkt')
-# Below line was needed once while running on Ubuntu
-nltk.download('wordnet')
+# # Below line was needed once while running on Windows 10 and Ubuntu
+# nltk.download('punkt')
+# # Below line was needed once while running on Ubuntu
+# nltk.download('wordnet')
 from nltk.stem import WordNetLemmatizer
 
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -110,7 +110,7 @@ def create_keras_model(training):
     model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
 
     # train
-    hist = model.fit(train_x, train_y, epochs=300, batch_size=5, verbose=1)
+    hist = model.fit(train_x, train_y, epochs=2000, batch_size=5, verbose=1)
     # pd.DataFrame(hist.history).to_csv(epochs_log_file_path)
     model.save(chatbot_model_file_path, hist)
     print('[INFO] :   - Model trained from Pickle')
